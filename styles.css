@@ -1,0 +1,150 @@
+/* styles.css */
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #6b4226;
+	background-image: url('./assets/Background-img.jpg');
+	background-size: cover;
+	background-position: center;
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.book {
+	width: 300px;
+	height: 450px;
+	position: relative;
+	perspective: 2000px;
+	cursor: pointer;
+	margin: auto;
+}
+
+.book-cover,
+.page-left,
+.page-right,
+.book-backcover {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transition: transform 1.5s ease-in-out;
+	backface-visibility: hidden;
+	border-radius: 10px;
+	z-index: 3;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.book-cover {
+	background: url('./assets/portada.jpg') no-repeat center center / cover;
+	border: 4px solid #4e2600;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+	z-index: 3;
+	transform-origin: left;
+	opacity: 1;
+	visibility: visible;
+}
+
+.book-backcover {
+	background: url('./assets/contraportada.png') no-repeat center center / cover;
+	border: 4px solid #4e2600;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.page-left {
+	background-color: #fff9e6;
+	border: 2px solid #8B4513;
+	z-index: 2;
+	transform-origin: left;
+}
+
+.page-right {
+	background-color: #fff9e6;
+	border: 2px solid #8B4513;
+	transform-origin: right;
+	overflow: hidden;
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.8s ease 0.1s, visibility 0s linear 0.8s;
+}
+
+.book.open .book-cover {
+	transform: rotateY(-160deg);
+	z-index: 3;
+}
+
+.book.open .page-left {
+	transform: rotateY(-160deg);
+}
+
+.book.open .page-right {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.8s ease 1.5s, visibility 0s linear 1.5s;
+	z-index: 2;
+}
+
+.inside {
+	opacity: 0;
+	transition: opacity 1s ease;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	padding: 20px;
+	background-color: #fffbe6;
+	border: 2px dashed #d2691e;
+	text-align: center;
+	color: #8B4513;
+	font-size: 1.1rem;
+	border-radius: 12px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow-y: auto;
+	max-height: 90%;
+}
+
+.inside.visible {
+	opacity: 1;
+}
+
+.inside h2 {
+	font-size: 1.8rem;
+	margin-bottom: 15px;
+}
+
+.inside p {
+	margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+	.book {
+		width: 90vw;
+		height: 80vh;
+	}
+
+	.inside h2 {
+		font-size: 1.4rem;
+	}
+
+	.inside p {
+		font-size: 0.95rem;
+	}
+}
