@@ -11,15 +11,15 @@ book.addEventListener('click', () => {
 		book.classList.add('open-step-1');
 		backcover.style.opacity = 1;
 		backcover.style.visibility = 'visible';
-		imgLeft.src = './assets/2.png';
+		imgLeft.src = './assets/1.png';
 		paso = 1;
 	} else if (paso === 1) {
 		const flipPage = document.getElementById('page-flip');
 		const imgRight = document.querySelector('.page-right img');
 		const imgFlip = flipPage.querySelector('img');
 
-		imgRight.src = './assets/1.png';
-		imgFlip.src = './assets/2.png';
+		imgRight.src = './assets/2.png';
+		imgFlip.src = './assets/1.png';
 
 		book.classList.remove('open-step-1');
 		book.classList.add('open-step-2');
